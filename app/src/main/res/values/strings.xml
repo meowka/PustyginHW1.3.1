@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">HW1.3.1</string>
+    <string name="LogoTxt">Комплексная система мониторинга здоровья  Pustygin</string>
+    <string name="edtTxtMiddleName">Введите отчество</string>
+    <string name="edtTxtName">Введите имя</string>
+    <string name="edtTxtSurname">Введите фамилию</string>
+    <string name="tachycardia">Тахикардия</string>
+    <string name="saveBtn">Сохранить</string>
+    <string name="age">Возраст</string>
+    <string name="pressureBtn">Давление</string>
+    <string name="vitalsBtn">Жиз. показатели</string>
+    <string name="menuBtn">Меню</string>
+    <string name="tachycardiaChBx">Тахикардия</string>
+    <string name="WeightHint">Вес</string>
+    <string name="StepsHint">Количество шагов</string>
+    <string name="UpperHint">Верхнее давление</string>
+    <string name="LowerHint">Нижнее давление</string>
+    <string name="PulseHint">Пульс</string>
+    <string name="dateHint">Дата</string>
+</resources>
