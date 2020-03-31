@@ -6,13 +6,13 @@ public class Pressure {
 
     static ArrayList<Pressure> p = new ArrayList<>();
 
-    String upper;
-    String lower;
-    String pulse;
+    int upper;
+    int lower;
+    int pulse;
     boolean tachycardia;
     String date;
 
-    public Pressure(String upper, String lower, String pulse, boolean tachycardia, String date) {
+    public Pressure(int upper, int lower, int pulse, boolean tachycardia, String date) {
         this.upper = upper;
         this.lower = lower;
         this.pulse = pulse;
@@ -20,27 +20,43 @@ public class Pressure {
         this.date = date;
     }
 
-    public String getUpper() {
+    public int getUpper() {
         return upper;
     }
 
-    public void setUpper(String upper) {
+    public void setUpper(int upper) {
         this.upper = upper;
     }
 
-    public String getLower() {
+    public int getLower() {
         return lower;
     }
 
-    public void setLower(String lower) {
+    public void setLower(int lower) {
         this.lower = lower;
     }
 
-    public String getPulse() {
+    public int getPulse() {
         return pulse;
     }
 
-    public void setPulse(String pulse) {
+    public void setPulse(int pulse) {
         this.pulse = pulse;
+    }
+
+    public boolean isTachycardia() {
+        return tachycardia;
+    }
+
+    public void setTachycardia(boolean tachycardia) {
+        this.tachycardia = tachycardia;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

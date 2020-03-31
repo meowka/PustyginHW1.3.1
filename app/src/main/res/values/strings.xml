@@ -17,4 +17,5 @@
     <string name="LowerHint">Нижнее давление</string>
     <string name="PulseHint">Пульс</string>
     <string name="dateHint">Дата</string>
+    <string name="errorInfo">Введенынеправельные данные</string>
 </resources>

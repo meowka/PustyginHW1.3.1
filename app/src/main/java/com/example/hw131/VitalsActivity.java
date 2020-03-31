@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class VitalsActivity extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class VitalsActivity extends AppCompatActivity {
 
         Bundle arguments = getIntent().getExtras();
         final FullName fullName;
-        if(arguments!=null){
+        if (arguments != null) {
             fullName = (FullName) arguments.getSerializable(FullName.class.getSimpleName());
             fullNameTxt.setText(fullName.getSurname() + " " + fullName.getName() + " " + fullName.getMiddleName() + ", Возраст: " + fullName.getAge());
         }
@@ -43,8 +44,20 @@ public class VitalsActivity extends AppCompatActivity {
                 String strSteps = edtTxtSteps.getText().toString();
                 String strWeight = edtTxtWeight.getText().toString();
 
-                Vitals vitals = new Vitals(Float.parseFloat(strWeight), Integer.parseInt(strSteps));
-                Vitals.v.add(vitals);
+                try {
+                    int steps = Integer.parseInt(strSteps);
+                    float weight = Float.parseFloat(strWeight);
+                    String result = "Вес " + weight + " ,Количество шагов " + steps;
+                    Toast.makeText(VitalsActivity.this, result, Toast.LENGTH_SHORT).show();
+                    Vitals vitals = new Vitals(weight, steps);
+                    Vitals.v.add(vitals);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                    Toast.makeText(VitalsActivity.this, R.string.errorInfo, Toast.LENGTH_LONG).show();
+                } finally {
+                    edtTxtSteps.getText().clear();
+                    edtTxtWeight.getText().clear();
+                }
             }
         });
 
@@ -57,17 +70,17 @@ public class VitalsActivity extends AppCompatActivity {
             }
         });
 
-pressureBtn.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Log.d(TAG, "clicked pressureBtn");
-        Intent intent = new Intent(VitalsActivity.this, PressureActivity.class);
-        startActivity(intent);
-    }
-});
+        pressureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "clicked pressureBtn");
+                Intent intent = new Intent(VitalsActivity.this, PressureActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    private void init(){
+    private void init() {
         fullNameTxt = (TextView) findViewById(R.id.fullNameTxt);
         edtTxtWeight = (EditText) findViewById(R.id.edtTxtWeight);
         edtTxtSteps = (EditText) findViewById(R.id.edtTxtSteps);

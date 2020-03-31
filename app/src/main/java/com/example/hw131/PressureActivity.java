@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class PressureActivity extends AppCompatActivity {
@@ -51,8 +52,27 @@ public class PressureActivity extends AppCompatActivity {
                 boolean haveTachycardia = tachycardiaChBx.isChecked();
                 String strTxtDate = edTxtDate.getText().toString();
 
-                Pressure pressure = new Pressure(edtTxtUpper, edtTxtLower, edtTxtPulse, haveTachycardia, strTxtDate);
-                Pressure.p.add(pressure);
+                try {
+                    int upper = Integer.parseInt(edtTxtUpper);
+                    int lower = Integer.parseInt(edtTxtLower);
+                    int pulse = Integer.parseInt(edtTxtPulse);
+
+
+                    String result = "Верхнее давление: " + upper + " ,Нижнее давление: " + lower + " ,Пульс: " + pulse + " ,Тахикардия имеется: " + haveTachycardia + " ,Дата: " + strTxtDate;
+                    Toast.makeText(PressureActivity.this,result,Toast.LENGTH_SHORT).show();
+                    Pressure pressure = new Pressure(upper, lower, pulse, haveTachycardia, strTxtDate);
+                    Pressure.p.add(pressure);
+                } catch (NumberFormatException e){
+                    e.printStackTrace();
+                    Toast.makeText(PressureActivity.this, R.string.errorInfo, Toast.LENGTH_LONG).show();
+                }
+                finally {
+                    edTxtUpper.getText().clear();
+                    edTxtLower.getText().clear();
+                    edTxtPulse.getText().clear();
+                    tachycardiaChBx.setChecked(false);
+                    edTxtDate.getText().clear();
+                }
             }
         });
 
